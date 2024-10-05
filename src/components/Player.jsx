@@ -2,7 +2,8 @@ import { useState } from "react";
 
 export default function Player({ name, symbol }) {
   const [isEditing, setIsEditing] = useState(false);
-  const reaction = () => {
+  const btnCaption = "Edit";
+  const handleEditClick = () => {
     setIsEditing(!isEditing);
     console.log(isEditing);
   };
@@ -12,15 +13,15 @@ export default function Player({ name, symbol }) {
         <span className="player-name">{name}</span>
         <span className="player-symbol">{symbol}</span>
       </span>
-      <button onClick={reaction}>Edit</button>
+      <button onClick={handleEditClick}>{btnCaption}</button>
     </li>
   ) : (
     <li>
       <span className="player-info">
-        <input></input>
+        <input type="text" required value={name}></input>
         <span className="player-symbol">{symbol}</span>
       </span>
-      <button onClick={reaction}>Edit</button>
+      <button onClick={handleEditClick}>Save</button>
     </li>
   );
 }
