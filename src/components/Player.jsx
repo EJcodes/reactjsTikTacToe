@@ -4,8 +4,7 @@ export default function Player({ name, symbol }) {
   const [isEditing, setIsEditing] = useState(false);
   const btnCaption = "Edit";
   const handleEditClick = () => {
-    setIsEditing(!isEditing);
-    console.log(isEditing);
+    setIsEditing((editing) => !editing);
   };
   return isEditing ? (
     <li>
