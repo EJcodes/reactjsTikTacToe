@@ -9,9 +9,11 @@ export default function GameBoard() {
 
   function handleSelectSquare(rowIndex, colIndex) {
     setGameBoard((prevGameBoard) => {
-      const updateBoard = [...prevGameBoard];
+      const updatedBoard = [
+        ...prevGameBoard.map((innerArray) => [...innerArray]),
+      ];
       prevGameBoard[rowIndex][colIndex] = "X";
-      return prevGameBoard;
+      return updatedBoard;
     });
   }
 
