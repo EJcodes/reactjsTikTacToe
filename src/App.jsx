@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Log from "./components/Log.jsx";
 import Player from "./components/Player.jsx";
 import GameBoard from "./components/GameBoard.jsx";
 function App() {
@@ -27,7 +28,7 @@ function App() {
           activePlayerSymbol={activePlayer}
         />
       </div>
-      LOG
+      <Log />
     </main>
   );
 }
