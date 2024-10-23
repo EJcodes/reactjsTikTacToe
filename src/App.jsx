@@ -19,24 +19,22 @@ function deriveActivePlayer(gameTurns) {
   return currentPlayer;
 }
 
-}
-
 function App() {
   const [gameTurns, SetGameTurns] = useState([]);
-  
+
   const activePlayer = deriveActivePlayer(gameTurns);
-  
+
   let gameBoard = initialGameBoard;
-  
+
   for (const turn of gameTurns) {
     const { square, player } = turn;
     const { row, col } = square;
-  
+
     gameBoard[row][col] = player;
   }
-  
+
   let winner = null;
-  
+
   for (const combination of WINNING_COMBINATIONS) {
     const firstSquareSymbol =
       gameBoard[combination[0].row][combination[0].column];
@@ -44,7 +42,7 @@ function App() {
       gameBoard[combination[1].row][combination[1].column];
     const thirdSquareSymbol =
       gameBoard[combination[2].row][combination[2].column];
-  
+
     if (
       firstSquareSymbol &&
       firstSquareSymbol === secondSquareSymbol &&
@@ -52,6 +50,7 @@ function App() {
     ) {
       winner = firstSquareSymbol;
     }
+  }
   function handleSelectSquare(rowIndex, colIndex) {
     // setActivePlayer((curActivePlayer) => (curActivePlayer === "X" ? "O" : "X"));
     SetGameTurns((prevTurns) => {
@@ -80,7 +79,7 @@ function App() {
             isActive={activePlayer === "O"}
           />
         </ol>
-        {winner && <p>You won,{winner}!</p>}
+        {winner && <p>You won, {winner}</p>}
         <GameBoard onSelectSquare={handleSelectSquare} board={gameBoard} />
       </div>
       <Log turns={gameTurns} />
